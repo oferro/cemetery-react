@@ -1,6 +1,6 @@
 // eslint-disable-next-line
 const fetchSerchData = (dstSerch) => {
-  return new Promise (resolve => {
+  return new Promise ((resolve) => {
     let urlSrc = "";
     if (dstSerch.length) {
       urlSrc = `http://localhost:3001/desist/serch/${dstSerch}`;
@@ -9,11 +9,16 @@ const fetchSerchData = (dstSerch) => {
     }
       fetch(urlSrc)
           .then((resp) => {
-            resolve(resp.json());
+            (resp.status !== 400 
+            ?
+            resolve(resp.json()) 
+            :
+            resolve([]))
             return;
             })
       console.log("FDA urlSrc = " + urlSrc);
-    })
+    }
+    )
   }
 
   // async function fetchSerchData2 (dstSerch) {

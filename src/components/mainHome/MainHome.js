@@ -10,6 +10,7 @@ const MainHome = () => {
   const [serchValue, setSerchValue] = useState("");
   const [desistList, setDesistList] = useState([]);
   const [loading, setLoading] = useState(true); // Loading state
+  const [noData, setNoData] = useState(""); // fetch status === 400 Not Found
 
   useEffect(() => {
     // setDesistList([]);
@@ -28,7 +29,13 @@ const MainHome = () => {
         )
         .catch(console.log);
     }
-    getDesistList();
+
+    if (serchValue.length) {
+      getDesistList();
+      (desistList.length ? setNoData("Not Found") : setNoData(""))
+    } else {
+      setDesistList([]);
+    }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [serchValue]);
@@ -64,6 +71,8 @@ const MainHome = () => {
               {/* Checking for loading state before rendering the data */}
               {loading ? (
                 <p>Loading...</p>
+              ) : !desistList.length ? (
+                <p>{noData}</p>
               ) : (
                 <DesistTable desistList={desistList} />
               )}
