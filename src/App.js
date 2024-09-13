@@ -5,6 +5,7 @@ import Navigation from "./components/navigation/Navigation";
 import MainHome from "./components/mainHome/MainHome";
 import Footer from "./components/footer/Footer";
 
+
 const App = () => {
   return (
     <Container>

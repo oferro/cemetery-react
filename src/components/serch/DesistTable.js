@@ -1,21 +1,25 @@
 import React from "react";
 import { Container, Table } from "react-bootstrap";
+import TabID from "../tabs/TabID";
 
 const DesistTable = (desistList) => {
   // console.log("table sorce: ",typeof desistList, " length : ",Object.values(desistList).length, Object.values(desistList));
 
-  let dstTable = [];
+  let dstTable = desistList;
   dstTable = Array.from(Object.values(desistList));
   dstTable.length ? (dstTable = dstTable[0]) : (dstTable = ["", ""]);
   console.log("dstTable = : ", dstTable);
 
   const renderDesist = (dst) => {
-    const urlSerchById = "http://localhost:3001/desist/serch/" + dst.id;
+    // const urlSerchById = dst.id;
     console.log("renderDesist row :", dst);
+    let desistSrc = "http://localhost:3001/desist/"+dst.id;
     return (
       <tr key={dst.id}>
         <td>
-          <a href={urlSerchById}>{dst.forename}</a>
+          <a href={desistSrc}>
+          {dst.forename}
+          </a>
         </td>
         <td>{dst.sorname}</td>
       </tr>
@@ -23,6 +27,7 @@ const DesistTable = (desistList) => {
   };
 
   return (
+    <Container>
     <Container>
       <Table className="responsive striped bordered hover">
         <thead>
@@ -33,6 +38,8 @@ const DesistTable = (desistList) => {
         </thead>
         <tbody>{dstTable.map(renderDesist)}</tbody>
       </Table>
+    </Container>
+    <TabID id={dstTable[0].id} />
     </Container>
   );
 };

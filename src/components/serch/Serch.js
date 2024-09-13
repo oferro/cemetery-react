@@ -16,7 +16,7 @@ const Serch = ({callback}) => {
   const handleSubmit = e => {
     e.preventDefault();
     callback(dstName);
-  }
+}
 
   return (
     <Container className="border border-primary border-2 rounded-3 m-3">

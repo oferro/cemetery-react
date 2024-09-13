@@ -21,6 +21,28 @@ const fetchSerchData = (dstSerch) => {
     )
   }
 
+  const fetchDesistById = (desistID) => {
+    let id = desistID;
+    return new Promise ((resolve) => {
+      // let urlSrc = "";
+      // if (desistID) {
+        let urlSrc = `http://localhost:3001/desist/${id}`;
+        console.log("desistID urlSrc = " + urlSrc);
+      // }
+        fetch(urlSrc)
+            .then((resp) => {
+              (resp.status === 200 
+              ?
+              resolve(resp[0].json()) 
+              :
+              resolve([]))
+              return;
+              })
+      }
+      )
+    }
+  
+  
   // async function fetchSerchData2 (dstSerch) {
   //   let urlSrc = "";
   //   if (dstSerch.length) {
@@ -37,4 +59,5 @@ const fetchSerchData = (dstSerch) => {
 module.exports = {
   
   fetchSerchData,
+  fetchDesistById,
 };
