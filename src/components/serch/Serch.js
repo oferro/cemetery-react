@@ -7,7 +7,7 @@ import {
   Col,
   Image,
   //  FormGroup,
-  // Just comment for test git sync,
+  // Just comment for test git sync 2,
   
 } from "react-bootstrap";
 
